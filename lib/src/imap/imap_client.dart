@@ -1073,8 +1073,8 @@ class ImapClient extends ClientBase {
       }
       return '"$path"';
     }
-    final pathSeparator = serverInfo.pathSeparator ?? '/';
-    var encodedPath = Mailbox.encode(path, pathSeparator);
+    // final pathSeparator = serverInfo.pathSeparator ?? '/';
+    var encodedPath = path;
     if (encodedPath.contains(' ') ||
         (alwaysQuote && !encodedPath.startsWith('"'))) {
       encodedPath = '"$encodedPath"';
