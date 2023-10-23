@@ -33,6 +33,7 @@ class MailSearch {
     this.sentBefore,
     this.pageSize = 20,
     this.fetchPreference = FetchPreference.envelope,
+    this.pageNumber = 1
   });
 
   /// The query text
@@ -61,6 +62,10 @@ class MailSearch {
 
   /// The fetch preference for loading the search results
   final FetchPreference fetchPreference;
+
+  // The page number of messages that are loaded initially
+  // ignore: public_member_api_docs
+  final int pageNumber;
 
   /// Checks a new incoming [message] if it matches this query
   bool matches(MimeMessage message) {
@@ -153,6 +158,7 @@ class MailSearch {
     DateTime? sentBefore,
     DateTime? sentSince,
     int? pageSize,
+    int? pageNumber,
   }) =>
       MailSearch(
         query ?? this.query,
@@ -163,5 +169,6 @@ class MailSearch {
         sentBefore: sentBefore ?? this.sentBefore,
         sentSince: sentSince ?? this.sentSince,
         pageSize: pageSize ?? this.pageSize,
+        pageNumber: pageNumber ?? this.pageNumber,
       );
 }

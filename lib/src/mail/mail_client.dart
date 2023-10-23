@@ -2657,7 +2657,8 @@ class _IncomingImapClient extends _IncomingMailClient {
         return MailSearchResult.empty(search);
       }
 
-      final requestSequence = sequence.subsequenceFromPage(1, search.pageSize);
+      final requestSequence =
+          sequence.subsequenceFromPage(search.pageNumber, search.pageSize);
       final messages = await _fetchMessageSequence(requestSequence,
           fetchPreference: search.fetchPreference, markAsSeen: false);
       return MailSearchResult(
